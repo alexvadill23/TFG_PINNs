@@ -16,7 +16,7 @@ class SchrodingerPINN(nn.Module):
             nn.Tanh(),
             nn.Linear(64, 1)
         )
-        self.E = nn.Parameter(torch.tensor([0.0], dtype=torch.float32))
+        self.E = nn.Parameter(torch.tensor([0], dtype=torch.float32))  
         self.net.apply(self.init_weights)
 
     def init_weights(self, m):
@@ -25,4 +25,4 @@ class SchrodingerPINN(nn.Module):
             nn.init.zeros_(m.bias)
 
     def forward(self, x):
-        return self.net(x)
+        return self.net(x)  
