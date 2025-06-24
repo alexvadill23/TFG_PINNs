@@ -79,9 +79,9 @@ x_pde_t = torch.tensor(x_pde_orig, dtype=torch.float32)
 w_pde = 0.5
 w_data = 0.5
 
-# --------------------------------------------------
+
 # 1. Entrenamiento de la PINN
-# --------------------------------------------------
+
 print("Iniciando entrenamiento PINN...")
 start_time_PINN = time.time()
 
@@ -130,9 +130,9 @@ end_time_PINN = time.time()
 training_time_PINN = end_time_PINN - start_time_PINN
 print(f"Tiempo de entrenamiento PINN: {training_time_PINN:.2f} segundos")
             
-# --------------------------------------------------
+
 # 2. Entrenamiento de la NN pura (Solo datos)
-# --------------------------------------------------
+
 print("\nIniciando entrenamiento NN simple...")
 start_time_NN = time.time()
 
@@ -166,9 +166,8 @@ end_time_NN = time.time()
 training_time_NN = end_time_NN - start_time_NN
 print(f"Tiempo de entrenamiento NN: {training_time_NN:.2f} segundos")
         
-# --------------------------------------------------
+
 # 3. Gráficas finales
-# --------------------------------------------------
 
 # Definir malla para evaluación
 x_fine = np.linspace(0, 6*np.pi, 200).reshape(-1, 1)
@@ -231,7 +230,7 @@ ax.plot(x_fine, y_exacta, 'k--', label='Solución exacta: cos(x)', linewidth=2)
 ax.scatter(x_pde_orig, np.zeros_like(x_pde_orig), color='green', marker='o', 
            s=30, label='Puntos PDE', zorder=5, alpha=0.6)
 
-# Dibujar los puntos de entrenamiento SOBRE la función (no en y=0)
+# Dibujar los puntos de entrenamiento
 x_train_np = x_train.detach().numpy()
 y_train_np = y_train.detach().numpy()
 ax.scatter(x_train_np, y_train_np, color='red', marker='s', 
