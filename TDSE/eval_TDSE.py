@@ -142,7 +142,7 @@ for num_stages in [1, 2, 4, 8]:
     plt.close()
     
 
-# --- Gráfica conjunta de MSE ---
+# Gráfica conjunta de MSE
 plt.figure()
 for num_stages in [1, 2, 4, 8]:
     mse_t = np.load(f"mse_t_{num_stages}etapas.npy")
