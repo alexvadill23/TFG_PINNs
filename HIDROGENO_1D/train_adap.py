@@ -17,9 +17,9 @@ if torch.cuda.is_available():
 
 # Parámetros del problema
 r_min = 1e-3
-r_max = 10.0  # Dominio más pequeño para mejor concentración de puntos
+r_max = 10.0 
 r_cutoff = 7.0
-num_points_init = 500  # Más puntos iniciales
+num_points_init = 500  
 num_points_add = 50
 refine_every = 500
 max_total_points = 2500  # Limita el número total de puntos
@@ -72,7 +72,7 @@ def train_model_adaptativo():
     r_train = torch.linspace(r_min, r_max, num_points_init, device=device).view(-1, 1)
     E_history, loss_history, num_points_history = [], [], []
 
-    # --- Criterio de parada energético ---
+    # Criterio de parada energético
     window = 1000
     tol_std = 0.0001
     tol_slope = 1e-6
