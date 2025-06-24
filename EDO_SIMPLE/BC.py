@@ -66,9 +66,8 @@ x_pde_t = torch.tensor(x_pde_orig, dtype=torch.float32)
 w_pde = 0.5   # para la PDE
 w_bc  = 0.5   # para las condiciones de contorno
 
-# -------------------------------
 # 1. Entrenamiento del modelo PINN (PDE + BC)
-# -------------------------------
+
 print("Iniciando entrenamiento PINN (PDE + BC)...")
 start_time_PINN = time.time()
 
