@@ -19,11 +19,11 @@ if torch.cuda.is_available():
 r_min = 1e-3
 r_max = 10.0
 
-# --- Cálculo de densidad máxima de la malla adaptativa ---
+# Cálculo de densidad máxima de la malla adaptativa 
 # Carga los puntos de la malla adaptativa
 r_adap = np.load("r_vals_hidrogeno_FINAL.npy")  
 
-num_bins = 40  #
+num_bins = 40  
 counts, bins = np.histogram(r_adap, bins=num_bins)
 max_density = np.max(counts)
 print(f"Densidad máxima de puntos en la malla adaptativa: {max_density} puntos por intervalo ({num_bins} intervalos)")
@@ -81,7 +81,7 @@ def train_model_fija():
     r_train = torch.linspace(r_min, r_max, num_points_fixed, device=device).view(-1, 1)
     E_history, loss_history, num_points_history = [], [], []
 
-    # --- Criterio de parada energético ---
+    # Criterio de parada energético
     window = 1000
     tol_std = 0.0001
     tol_slope = 1e-6
@@ -103,7 +103,7 @@ def train_model_fija():
         if epoch % 1000 == 0:
             print(f"Epoch {epoch}: Loss = {loss.item():.6f}, E = {current_energy:.6f}, puntos = {r_train.shape[0]}")
 
-        # --- Criterio de parada por estabilización de la energía ---
+        # Criterio de parada por estabilización de la energía
         if epoch > window:
             E_window = np.array(E_history[-window:])
             std = np.std(E_window)
