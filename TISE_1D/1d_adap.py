@@ -24,7 +24,7 @@ def train_adap(
     EPOCAS_ESTABLES_CONSECUTIVAS = 1000
     VENTANA_ESTABILIDAD = 1000
 
-    max_total_points = 1000  # Límite de puntos de colocación
+    max_total_points = 1000  # Límite de puntos
     lr_switched = False
 
     model = SchrodingerPINN().to(device)
@@ -138,7 +138,7 @@ def train_adap(
             lr_switched = True
             print(f"Learning rate cambiado a 1e-4 (malla completa alcanzada)")
 
-        # Si se cumple el criterio de parada, sal del bucle principal
+        # Si se cumple el criterio de parada, sale del bucle principal
         if contador_estable >= EPOCAS_ESTABLES_CONSECUTIVAS:
             break
 
@@ -172,17 +172,6 @@ def train_adap(
     print(f"  Puntos utilizados: {x_train.shape[0]}")
     print(f"  Tiempo total: {end-start:.2f} segundos")
     print(f"  Épocas completadas: {epoch+1}")
-
-    # Visualización de la función de onda y la energía
-    if plot_result:
-        plt.figure(figsize=(10,4))
-        plt.subplot(1,2,1)
-        plt.plot(np.arange(len(E_history)), E_history, label="Energía PINN")
-        plt.axhline(energy_theoretical, color='r', linestyle='--', label="Energía teórica")
-        plt.xlabel("Época")
-        plt.ylabel("Energía")
-        plt.legend()
-        plt.title("Energía durante el entrenamiento")
 
 if __name__ == "__main__":
     n = int(input("Introduce el número de estado (n=0,1,2,...): "))
