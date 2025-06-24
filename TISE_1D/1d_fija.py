@@ -146,16 +146,6 @@ def train_fija(
     print(f"  Tiempo total: {end-start:.2f} segundos")
     print(f"  Épocas completadas: {epoch+1}")
 
-    # Visualización de la función de onda y la energía
-    if plot_result:
-        plt.figure(figsize=(10,4))
-        plt.subplot(1,2,1)
-        plt.plot(np.arange(len(E_history)), E_history, label="Energía PINN")
-        plt.axhline(energy_theoretical, color='r', linestyle='--', label="Energía teórica")
-        plt.xlabel("Época")
-        plt.ylabel("Energía")
-        plt.legend()
-        plt.title("Energía durante el entrenamiento")
 
 
 if __name__ == "__main__":
