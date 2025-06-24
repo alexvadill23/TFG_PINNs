@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error
 import time
 
-# Función auxiliar para definir ticks en múltiplos de π en el eje x
+# Función auxiliar para definir ticks en múltiplos de pi en el eje x
 def set_pi_ticks(ax, xmax):
     ticks = np.arange(0, xmax + np.pi, np.pi)
     labels = [ "0" if i==0 else rf"${i}\pi$" for i in range(len(ticks)) ]  # Añadida 'r'
@@ -109,9 +109,8 @@ end_time_PINN = time.time()
 training_time_PINN = end_time_PINN - start_time_PINN
 print(f"Tiempo de entrenamiento PINN: {training_time_PINN:.2f} segundos")
 
-# -------------------------------
 # 2. Entrenamiento del modelo NN simple (Solo BC)
-# -------------------------------
+
 print("\nIniciando entrenamiento NN simple (Solo BC)...")
 start_time_NN = time.time()
 
@@ -201,11 +200,11 @@ ax.plot(x_fine, y_PINN, 'b-', label='PINN (PDE + BC)', linewidth=2)
 ax.plot(x_fine, y_NN, 'm-', label='NN Simple (Solo BC)', linewidth=2)
 ax.plot(x_fine, y_exacta, 'k--', label='Solución exacta: cos(x)', linewidth=2)
 
-# Puntos PDE en y=0 (puedes dejarlo si quieres visualizar la física)
+# Puntos PDE en y=0 
 ax.scatter(x_pde_orig, np.zeros_like(x_pde_orig), color='green', marker='o', 
            s=30, label='Puntos PDE', zorder=5, alpha=0.6)
 
-# Punto de condición de contorno SOBRE la función (en x=0, y=1)
+# Punto de condición de contorno (en x=0, y=1)
 ax.scatter([0], [1], color='red', marker='D', s=100, 
            label='Condición: y(0)=1', zorder=6, edgecolors='darkred')
 
@@ -218,7 +217,7 @@ set_pi_ticks(ax, 6*np.pi)
 plt.savefig('BC_comparacion_funciones.png', dpi=300, bbox_inches='tight')
 plt.close()
 
-# Gráfica de y_pred vs y_true para puntos específicos
+# Gráfica de y_pred vs y_true 
 # Evaluamos en algunos puntos conocidos
 x_test_points = np.array([[0], [np.pi/2], [np.pi], [3*np.pi/2], [2*np.pi]]).reshape(-1, 1)
 y_test_exact = np.cos(x_test_points)
