@@ -121,7 +121,6 @@ def train_fija(
     torch.save(model.state_dict(), f"modelo_n{n}_fija.pth")
     training_info = {
     'training_time': end - start,
-    # puedes añadir más info si quieres
     }
     model.eval()
     with torch.no_grad():
