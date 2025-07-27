@@ -1,20 +1,28 @@
 # TFG_PINNs
 
-Este repositorio contiene el código desarrollado para el Trabajo Fin de Grado sobre Physics-Informed Neural Networks (PINNs) aplicado a la resolución de ecuaciones diferenciales en física.
+This repository contains the code developed for Physics-Informed Neural Networks (PINNs) applied to solving differential equations and parameter estimation in physics.
 
-Incluye implementaciones de PINNs para los siguientes sistemas:
-- Ecuación diferencial ordinaria simple (EDO)
-- Ecuación de Schrödinger independiente del tiempo (TISE)
-- Ecuación de Schrödinger dependiente del tiempo (TDSE)
-- Átomo de hidrógeno en 1D
+It includes PINN implementations for the following systems:
 
-Para la EDO simple, cada archivo incluye la construcción de la clase PINN, su arquitectura, el proceso de entrenamiento y la evaluación.
+Simple ordinary differential equation (ODE)
 
-En los casos de TISE, TDSE e hidrógeno 1D, la estructura es la siguiente:
-- `pinn.py`: definición de la clase y arquitectura de la PINN
-- `adap.py`: entrenamiento con malla adaptativa
-- `fija.py`: entrenamiento con malla fija
-- `eval.py`: evaluación de resultados
+Time-independent Schrödinger equation (TISE)
 
-**Nota importante:**  
-En el caso de la TISE, los estados deben resolverse en orden creciente (primero n = 0, luego n = 1, etc.), ya que para imponer la ortogonalidad es necesario disponer de los estados anteriores.
+Time-dependent Schrödinger equation (TDSE)
+
+Hydrogen atom
+
+For the simple ODE, each file includes the construction of the PINN class, its architecture, the training process, and evaluation.
+
+For the TISE, TDSE, and 1D Hydrogen cases, the structure is as follows:
+
+pinn.py: definition of the PINN class and architecture
+
+adap.py: training with adaptive mesh
+
+fija.py: training with fixed mesh
+
+eval.py: evaluation of results
+
+**Important note**:
+For the TISE case, the states must be solved in ascending order (first n = 0, then n = 1, etc.) because orthogonality constraints require having the previous states available.
