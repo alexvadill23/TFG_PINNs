@@ -1,4 +1,4 @@
-# TFG_PINNs
+
 
 This repository contains the code developed for Physics-Informed Neural Networks (PINNs) applied to solving differential equations and parameter estimation in physics.
 
